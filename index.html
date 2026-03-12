@@ -3,160 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Офіційне Попередження</title>
+    <title>SECURITY NOTICE: KONTRA</title>
     <style>
-        /* Основні стилі в стилі Терміналу */
         body {
-            background-color: #0d0208; /* Дуже темний, майже чорний */
-            color: #00ff41; /* Класичний "матричний" зелений */
-            font-family: 'Courier New', Courier, monospace; /* Моноширинний шрифт */
+            background-color: #fff;
+            color: #000;
+            font-family: 'Helvetica', 'Arial', sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 40px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
         }
-
-        /* Контейнер для ефекту старого монітора */
-        .monitor-screen {
-            position: relative;
-            max-width: 800px;
+        .wrapper {
+            max-width: 650px;
             width: 100%;
-            background: rgba(0, 30, 0, 0.2);
-            padding: 30px;
-            border: 2px solid #00ff41;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-            border-radius: 5px;
         }
-
-        /* Ефект сканування ліній (Scanlines) */
-        .monitor-screen::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-            background-size: 100% 4px;
-            pointer-events: none;
-            z-index: 10;
+        .header {
+            border-bottom: 3px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
         }
-
-        /* Мерехтіння тексту (Flicker) */
-        .flicker {
-            animation: flicker 0.15s infinite;
-        }
-
-        @keyframes flicker {
-            0% { opacity: 0.97; }
-            50% { opacity: 1; }
-            100% { opacity: 0.98; }
-        }
-
-        /* Стилізація командного рядка */
-        .cmd-line {
-            margin: 0;
-            padding: 5px 0;
-        }
-
-        .prompt {
-            color: #ff0055; /* Рожевий для користувача */
-            font-weight: bold;
-        }
-
-        .path {
-            color: #00bcff; /* Блакитний для шляху */
-        }
-
-        .command {
-            color: #fff; /* Білий для самої команди */
-        }
-
-        /* Текст попередження */
-        .output {
-            color: #bfffbf; /* Світло-зелений для виводу */
-            margin-left: 15px;
-            margin-bottom: 25px;
-            border-left: 2px solid #00ff41;
-            padding-left: 15px;
-            line-height: 1.5;
-        }
-
-        .output strong {
+        .warning-box {
+            background-color: #ff0000;
             color: #fff;
-            text-shadow: 0 0 5px #00ff41;
-        }
-
-        .ascii-art {
-            font-size: 10px;
-            line-height: 1;
+            padding: 10px;
+            font-weight: bold;
             text-align: center;
-            margin-bottom: 20px;
-            white-space: pre;
-            color: #00ff41;
+            margin-bottom: 25px;
+            text-transform: uppercase;
         }
-
-        /* Каретка, що блимає */
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background-color: #00ff41;
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-            margin-left: 5px;
+        h2 {
+            font-size: 1.2em;
+            text-transform: uppercase;
+            margin-top: 30px;
+            border-left: 5px solid #ff0000;
+            padding-left: 10px;
         }
-
-        @keyframes blink {
-            from, to { background-color: transparent; }
-            50% { background-color: #00ff41; }
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
         }
-
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            .monitor-screen { padding: 15px; }
-            .ascii-art { font-size: 6px; }
-            .output { font-size: 14px; margin-left: 5px; padding-left: 10px; }
+        .footer {
+            margin-top: 50px;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="monitor-screen flicker">
-        <h1 class="logo">KONTRA</h1>
-        
-        <div class="ascii-art">
- _  _______  _   _ _______ _____        
-| |/ /  __ \| \ | |__   __|  __ \ /\    
-| ' /| |  | |  \| |  | |  | |__) /  \   
-|  < | |  | | . ` |  | |  |  _  / /\ \  
-| . \| |__| | |\  |  | |  | | \ \ ____ \ 
-|_|\_\_____/|_| \_|  |_|  |_|  \_/_/  \_\
+    <div class="wrapper">
+        <div class="header">
+            <strong>OFFICIAL STATEMENT / ГРУПА КОНТРА</strong>
         </div>
 
-        <div class="terminal-window">
-            <p class="cmd-line">
-                <span class="prompt">contra@system</span>:<span class="path">~</span>$ <span class="command">cat official_statement.txt</span>
-            </p>
-            <div class="output">
-                <strong>[UA] ОФІЦІЙНЕ ПОПЕРЕДЖЕННЯ:</strong> <br>
-                Ми — анонімна група КОНТРА. Мета нашої діяльності — вказати на критичний стан цифрової безпеки освітніх закладів. Ваші сервери вразливі, персональні дані не захищені, а доступ до панелей управління відкритий для сторонніх осіб. Це не прохання, це констатація факту: ваша система не витримує елементарної перевірки.
-                <br><br>
-                <strong>[RU] ОФИЦИАЛЬНОЕ ПРЕДУПРЕЖДЕНИЕ:</strong> <br>
-                Мы — анонимная группа КОНТРА. Наша деятельность направлена на выявление критических уязвимостей в инфраструктуре лицеев. Ваша текущая защита — формальность. Мы получили доступ к управлению ресурсами без специальных инструментов. Если безопасность не будет приведена в соответствие с современными нормами, последствия будут необратимы.
-            </div>
+        <div class="warning-box">
+            SYSTEM VULNERABILITY DETECTED
+        </div>
 
-            <p class="cmd-line">
-                <span class="prompt">contra@system</span>:<span class="path">~</span>$ <span class="command">show_log --targets</span>
-            </p>
-            <div class="output">
-                - Крихівецький ліцей: Уразливість підтверджена. Контроль відновлено.<br>
-                - Ліцей №11: Аналіз завершено. Уразливість критична.<br>
-                - Наступні об'єкти: В черзі на аудит.
-            </div>
+        <p><strong>[UA]</strong> Повідомляємо, що цифрова інфраструктура ліцеїв м. Івано-Франківська перебуває у критичному стані. Відсутність базового захисту персональних даних та відкриті API дозволяють отримати доступ до ресурсів закладу будь-якій сторонній особі.</p>
+        
+        <p>Це не спроба злому — це констатація повної відсутності безпеки. Рекомендуємо негайно вжити заходів щодо захисту серверів та закриття публічного доступу до панелей управління.</p>
 
-            <p class="cmd-line">
-                <span class="prompt">contra@system</span>:<span class="path">~</span>$ <span class="command">exit</span><span class="cursor"></span>
-            </p>
+        <p><strong>[RU]</strong> Сообщаем, что цифровая инфраструктура лицеев г. Ивано-Франковска находится в критическом состоянии. Отсутствие базовой защиты персональных данных и открытые API позволяют получить доступ к ресурсам заведения любому постороннему лицу.</p>
+
+        <p>Это не попытка взлома — это констатация полного отсутствия безопасности. Рекомендуем немедленно принять меры по защите серверов и закрытию публичного доступа к панелям управления.</p>
+
+        <h2>ОБ'ЄКТИ АУДИТУ:</h2>
+        <p>
+            - Криховецький ліцей: <strong>CONFIRMED</strong><br>
+            - Ліцей №11: <strong>CONFIRMED</strong><br>
+            - Наступні цілі: <strong>PENDING</strong>
+        </p>
+
+        <div class="footer">
+            ID: KONTRA-2026-X | NO_REPLY | ENCRYPTED_CHANNEL
         </div>
     </div>
 </body>
