@@ -3,131 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KONTRA | INFRASTRUCTURE EXPOSED</title>
+    <title>KONTRA | SECURITY NOTICE</title>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         body {
-            background-color: #0a0a0a; /* Глибокий чорний */
-            color: #d1d1d1;
-            font-family: 'Courier New', Courier, monospace; /* Хай-тек шрифт */
+            background-color: #000;
+            color: #fff;
+            font-family: 'Consolas', 'Monaco', monospace; /* Моноширинний шрифт для атмосфери */
             margin: 0;
-            padding: 20px;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            font-size: 14px;
+        }
+        .section {
+            height: 100vh;
             display: flex;
+            align-items: center;
             justify-content: center;
+            padding: 0 10%;
+            text-align: center;
         }
-        .wrapper {
-            max-width: 800px;
-            width: 100%;
-            border: 1px solid #333;
-            background: #111;
-            padding: 30px;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+        .content-box { max-width: 800px; }
+        
+        h2 { 
+            font-size: 1.5em; 
+            color: #ff0000; 
+            text-transform: uppercase; 
+            border-left: 4px solid #ff0000; 
+            padding-left: 15px; 
+            text-align: left; 
+            margin-bottom: 20px;
         }
-        .header {
-            border-bottom: 2px solid #ff0000;
-            padding-bottom: 15px;
-            margin-bottom: 30px;
+        
+        p { 
+            line-height: 1.7; 
+            color: #ccc; 
+            text-align: left; 
+            margin-bottom: 15px;
+        }
+        
+        strong { color: #fff; }
+
+        .tech-data { 
+            background: #080808; 
+            padding: 20px; 
+            border: 1px solid #1a1a1a; 
+            text-align: left; 
+            color: #00ff00; /* Консольний зелений */
+            margin-top: 10px;
+        }
+        
+        /* Mullvad Section */
+        .mullvad-ad { 
+            color: #ff8800; 
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
-        .header strong {
-            color: #ff0000;
-            letter-spacing: 2px;
-        }
-        .warning-box {
-            background-color: #ff0000;
-            color: #000;
-            padding: 12px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-            font-size: 1.1em;
-        }
-        h2 {
-            font-size: 1em;
-            text-transform: uppercase;
-            margin-top: 40px;
-            color: #ff0000;
-            background: rgba(255, 0, 0, 0.1);
-            padding: 5px 10px;
-            display: inline-block;
-        }
-        p {
-            font-size: 14px;
-            line-height: 1.7;
-            color: #aaa;
-        }
-        .tech-data {
-            border-left: 2px solid #333;
-            padding-left: 15px;
-            margin: 15px 0;
-            color: #00ff41; /* Колір консолі */
-        }
-        .status-confirmed { color: #ff0000; font-weight: bold; }
-        .status-exploited { color: #fff; background: #ff0000; padding: 0 5px; font-weight: bold; }
         
-        .footer {
-            margin-top: 60px;
-            font-size: 11px;
-            color: #444;
-            border-top: 1px solid #222;
-            padding-top: 20px;
-            display: flex;
-            justify-content: space-between;
+        .mullvad-logo { 
+            font-size: 8px; /* Робимо шрифт меншим для ASCII арту */
+            line-height: 8px; /* Рядки щільніше */
+            white-space: pre; /* Зберігаємо форматування пробілів */
+            margin-bottom: 30px; 
+            color: #ff8800; 
+            font-family: 'Courier New', monospace; /* Моноширинний для точок */
+            text-align: left; /* Має бути вліво, щоб лого не попливло */
         }
-        .author {
-            color: #ff0000;
-            text-decoration: none;
-            border: 1px solid #ff0000;
-            padding: 5px 10px;
-            transition: 0.3s;
+        
+        .author-link { 
+            text-align: center; 
+            margin-top: 50px; 
+            display: block;
         }
-        .author:hover {
-            background: #ff0000;
-            color: #000;
+        
+        a { 
+            color: #fff; 
+            text-decoration: none; 
+            border-bottom: 1px solid #ff0000; 
+            background-color: rgba(255, 0, 0, 0.1);
+            padding: 2px 5px;
+        }
+
+        .footer { 
+            padding: 40px; 
+            font-size: 11px; 
+            color: #444; 
+            text-align: center; 
+            border-top: 1px solid #1a1a1a;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">
-            <strong>KONTRA // 2026</strong>
-            <span style="color: #444;">ID: [49.8397, 24.0297]</span>
-        </div>
 
-        <div class="warning-box">
-            CRITICAL INFRASTRUCTURE EXPOSURE
-        </div>
-
-        <p><strong>[UA]</strong> Повідомляємо, що цифрова інфраструктура ліцеїв м. Івано-Франківська перебуває у критичному стані. Відсутність базового захисту персональних даних та застарілі архітектури API дозволяють отримати повний доступ до ресурсів закладу.</p>
-
-        <p>Це не спроба зламу — це вирок вашій безпеці. Рекомендуємо негайно вжити заходів щодо ізоляції серверів.</p>
-
-        <h2>ОБ'ЄКТИ АУДИТУ / STATUS:</h2>
-        <p>
-            - Крихівецький ліцей: <span class="status-confirmed">CONFIRMED</span><br>
-            - Ліцей №11: <span class="status-confirmed">CONFIRMED</span><br>
-            - Ліцей №13: <span class="status-exploited">EXPLOITED / VULNERABLE</span>
-        </p>
-
-        <div class="tech-data">
-            <strong>[ L13_DUMP_LOG ]</strong><br>
-            > HOST: lyceum13.if.ua<br>
-            > CMS: WordPress 5.3.21 (Outdated)<br>
-            > PHP: 7.4.0 (Unsupported/High Risk)<br>
-            > PLUGINS: Booster_Ext 1.1.3 (RCE Target), Elementor 2.9.6 (XSS)<br>
-            > ADMINS_LEAKED: lyceum13, lyubov-hurak<br>
-            > DOORS: XML-RPC/WP-CRON [OPEN]
-        </div>
-
-        <h2>TARGETS:</h2>
-        <p>- Наступні цілі: <strong>PENDING...</strong></p>
-
-        <div class="footer">
-            <span>NETWORK_SCAN_COMPLETED</span>
-            <a href="https://t.me/recidivismnational" class="author">by @recidivismnational</a>
+    <div class="section reveal">
+        <div class="content-box">
+            <h2>[UA] Стан інфраструктури</h2>
+            <p><strong>Повідомляємо</strong>, що цифрова інфраструктура ліцеїв м. Івано-Франківська перебуває у критичному стані. Відсутність базового захисту персональних даних та відкриті API дозволяють отримати доступ до ресурсів закладу будь-якій сторонній особі.</p>
+            <p>Це не спроба злому — це констатація повної відсутності безпеки. Рекомендуємо негайно вжити заходів щодо захисту серверів та закриття публічного доступу до панелей управління.</p>
         </div>
     </div>
+
+    <div class="section reveal">
+        <div class="content-box">
+            <h2>[RU] Состояние инфраструктуры</h2>
+            <p><strong>Сообщаем</strong>, что цифровая инфраструктура лицеев г. Ивано-Франковска находится в критическом состоянии. Отсутствие базовой защиты персональных данных и открытые API позволяют получить доступ к ресурсам заведения любому постороннему лицу.</p>
+            <p>Это не попытка взлома — это констатация полного отсутствия безопасности. Рекомендуем немедленно принять меры по защите серверов и закрытию публичного доступа к панелям управления.</p>
+        </div>
+    </div>
+
+    <div class="section reveal">
+        <div class="content-box">
+            <h2>ОБ'ЄКТИ АУДИТУ</h2>
+            <div class="tech-data">
+                - Крихівецький ліцей: <strong>CONFIRMED</strong><br>
+                - Ліцей №11: <strong>CONFIRMED</strong><br>
+                - Ліцей №13: <strong>EXPLOITED</strong><br>
+                &nbsp;&nbsp;[+] CMS: WordPress 5.3.21 / PHP 7.4.0<br>
+                &nbsp;&nbsp;[+] Vulnerable plugins: Booster Extension 1.1.3, Elementor 2.9.6<br>
+                &nbsp;&nbsp;[+] Admin entry points: lyceum13, lyubov-hurak<br>
+                &nbsp;&nbsp;[+] System Access: XML-RPC / WP-CRON Open<br>
+                - Наступні цілі: <strong>PENDING</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="section reveal">
+        <div class="content-box mullvad-ad">
+            <div class="mullvad-logo">
+                    .(&&&(.                                    
+                          %&&&&&&&&&&&&&&&&&&&&&&&&&&&#                         
+             
+        &&&&&&&&,,,,,             .,.,,&&&&&&&&                    
+                 &&&&&&,,,          % %   ,*,          ,,,&&&&&&                
+  
+            &&&&&.,        &    & & & #*&  #& &   ((      .,&&&&&             
+           &&&&&,.     &     %&&               ,&& &*&& &&     ,,%&&&&     
+      
+         &&&&%,      &* ,%       ,,,..,,.,,...       .@ &   #    .%&&&&        
+       &&&&*,    .* .(&&&&&&&&&&&&&&&&&&&&&.,      &&  &    ,/&&&&      
+      &&&&,    
+&        ,&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&.,   .&        ,&&&&     
+    %&&&,.      &&   ,(&&&&&&&&&&&&&&&&&&.,,,,,&&&&&&&&&&&,      @&&   .,&&&#   
+   &&&&,     &(.   ,&&&&&&&&&&&&&&&&.(  ,,,,,,,,,,,/&&&&&&&&,    &   (   .&&&%  
+  %&&&,     *&    .&&&&&&&&&&&&&&&&,   *,,,,,,,,,,,,,#&&&&&&&&,   * (&* ,&&&( 
+  &&&,  
+ &&,    .&&&&*&&&&&&&&&&.,,,,.,,,,,,,,,,,,,,,,&&&&&&&&&.   & %.
+,&&& 
+ &&&(,   %&#&   %&&..************/*&&,,,,,,,,,,,,,,,,,&&&&&&&&&&,   &&,    ,%&&&
+ &&&,      &#  ,&&&&&*****************&&,,,,,,,,,,,,,#&&&&&&&&&&&.  &&      ,&&&
+*&&&,   & &    &&&&&%&/*****************/%&*.,,,,,,,&&&&&&&&&&&&&,   &&&&   ,&&&
+&&&&,         .&&&&&&&&&**********************&&&&.,&&&&&&&&&&&&&,          ,&&&
+*&&&,         .&&&&&&&&&&&&***********************/&&&&&&&&&&&&&&.          ,&&&
+ &&&,          ,&&&&&&&&&&&&&&*********&&**********&&&&&&&&&&&&&&,     
+      ,&&&
+ &&&#,         .&&&&&&&&&&&&&&/**/**/***************&&&&&&&&&&&&.          ,%&&&
+  &&&,          ,&&&&&&&&&&&&&&/********************&&&&&&&&&&&,           ,&&& 
+  #&&&,    &&&    (&&&&&&&&&&/***********************%&&&&&&&&,    &&.    ,&&&( 
+   &&&&,           ,&&&&&&&&/*************************&&&&&&#.           ,&&&%  
+    #&&&.. 
+          ,&&&&&&&&&#*******************&&&&&&&*.           .,&&&/   
+      &&&&,             ,&&&&&&&&&&&&&&&##&&&&&&&&&&&&&&,   (         ,&&&&     
+       &&&&/,     .&&      ,.&&&&&&&&&&&&&&&&&&&&&&&,.
+& &       ,(&&&%      
+         &&&&&,    %*%& &        ,.,,%&&&&&(.,,,       &  &   %   ,&&&&&        
+           &&&&&,,     &  & &   %#                 &&.&  
+&&,   ..%&&&%          
+              &&&&&.,.     &.   &   & &  &&  &  &   &      .,,&&&&&             
+                 &&&&&&*,.      *&& #&  &  & &&%    
+   ,,/&&&&&&                
+                     &&&&&&&&*,,,,            .,,,,/&&&&&&&%                    
+                          (&&&&&&&&&&&&&&&&&&&&&&&&&&&/
+            </div>
+            
+            <p style="text-align: center; color: #ff8800; font-weight: bold; font-size: 16px;">STAY PRIVATE. USE MULLVAD VPN.</p>
+            
+            <a href="https://t.me/recidivismnational" class="author-link">by tg @recidivismnational</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        ID: KONTRA-2026-X | NO_REPLY | ENCRYPTED_CHANNEL
+    </div>
+
+    <script>
+        // Анімація ScrollReveal
+        ScrollReveal().reveal('.reveal', { 
+            delay: 100, // Мінімальна затримка
+            duration: 800, // Швидкість анімації
+            distance: '30px', 
+            origin: 'bottom',
+            reset: true, // Анімація повторюється при скролі назад
+            easing: 'cubic-bezier(0.5, 0, 0, 1)' // Більш агресивна анімація
+        });
+    </script>
 </body>
 </html>
+
