@@ -7,131 +7,119 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Consolas', 'Monaco', monospace; /* Моноширинний шрифт для атмосфери */
+            background-color: #000; /* Чорний фон */
+            color: #00ff00; /* Зелений текст (як у консолі) */
+            font-family: 'Courier New', Courier, monospace; /* Моноширинний шрифт */
             margin: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            font-size: 14px;
-        }
-        .section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 10%;
-            text-align: center;
-        }
-        .content-box { max-width: 800px; }
-        
-        h2 { 
-            font-size: 1.5em; 
-            color: #ff0000; 
-            text-transform: uppercase; 
-            border-left: 4px solid #ff0000; 
-            padding-left: 15px; 
-            text-align: left; 
-            margin-bottom: 20px;
-        }
-        
-        p { 
-            line-height: 1.7; 
-            color: #ccc; 
-            text-align: left; 
-            margin-bottom: 15px;
-        }
-        
-        strong { color: #fff; }
-
-        .tech-data { 
-            background: #080808; 
-            padding: 20px; 
-            border: 1px solid #1a1a1a; 
-            text-align: left; 
-            color: #00ff00; /* Консольний зелений */
-            margin-top: 10px;
-        }
-        
-        /* Mullvad Section */
-        .mullvad-ad { 
-            color: #ff8800; 
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        
-        .mullvad-logo { 
-            font-size: 8px; /* Робимо шрифт меншим для ASCII арту */
-            line-height: 8px; /* Рядки щільніше */
-            white-space: pre; /* Зберігаємо форматування пробілів */
-            margin-bottom: 30px; 
-            color: #ff8800; 
-            font-family: 'Courier New', monospace; /* Моноширинний для точок */
-            text-align: left; /* Має бути вліво, щоб лого не попливло */
-        }
-        
-        .author-link { 
-            text-align: center; 
-            margin-top: 50px; 
-            display: block;
-        }
-        
-        a { 
-            color: #fff; 
-            text-decoration: none; 
-            border-bottom: 1px solid #ff0000; 
-            background-color: rgba(255, 0, 0, 0.1);
-            padding: 2px 5px;
+            overflow-x: hidden; /* Щоб не було горизонтального скролу через анімацію */
+            scroll-behavior: smooth; /* Плавний скрол */
         }
 
-        .footer { 
-            padding: 40px; 
-            font-size: 11px; 
-            color: #444; 
-            text-align: center; 
-            border-top: 1px solid #1a1a1a;
+        .terminal-header {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #555;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-container {
+            margin-top: 80px; /* Відступ від фіксованого хедера */
+            width: 90%;
+            max-width: 650px; /* Квадратна структура тексту */
+            display: flex;
+            flex-direction: column;
+            gap: 150px; /* СЕРЕДНЯ ВІДСТАНЬ МІЖ БЛОКАМИ */
+            padding-bottom: 100px;
+        }
+
+        /* Стиль для ASCII-арту */
+        .ascii-art {
+            white-space: pre;
+            font-size: 8px;
+            line-height: 1;
+            color: #00ff00;
+            text-align: center;
+            overflow-x: auto;
+            margin-bottom: -50px; /* Зближує лого з першим текстом */
+        }
+
+        .block {
+            background-color: #050505; /* Трохи світліший чорний */
+            border: 1px solid #1a1a1a;
+            padding: 30px;
+            box-sizing: border-box;
+            opacity: 0; /* Початково приховано для анімації */
+            transform: translateY(20px); /* Початковий зсув */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        /* Клас, який додається скриптом для появи */
+        .block.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: 1.2em;
+            text-transform: uppercase;
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #ff0000; /* ЧЕРВОНИЙ ЗАГОЛОВОК */
+            border-left: 3px solid #ff0000;
+            padding-left: 10px;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+            color: #ccc; /* Сірий текст для кращого читання */
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        .author-sign {
+            margin-top: 40px;
+            text-align: right;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .footer {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #333;
+            padding: 20px;
+            border-top: 1px solid #111;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
 
-    <div class="section reveal">
-        <div class="content-box">
-            <h2>[UA] Стан інфраструктури</h2>
-            <p><strong>Повідомляємо</strong>, що цифрова інфраструктура ліцеїв м. Івано-Франківська перебуває у критичному стані. Відсутність базового захисту персональних даних та відкриті API дозволяють отримати доступ до ресурсів закладу будь-якій сторонній особі.</p>
-            <p>Це не спроба злому — це констатація повної відсутності безпеки. Рекомендуємо негайно вжити заходів щодо захисту серверів та закриття публічного доступу до панелей управління.</p>
-        </div>
+    <div class="terminal-header">
+        <span>SECURITY NOTICE // KONTRA-SITE.VERCEL.APP</span>
+        <span>ID: SYSTEM_BREACH</span>
     </div>
 
-    <div class="section reveal">
-        <div class="content-box">
-            <h2>[RU] Состояние инфраструктуры</h2>
-            <p><strong>Сообщаем</strong>, что цифровая инфраструктура лицеев г. Ивано-Франковска находится в критическом состоянии. Отсутствие базовой защиты персональных данных и открытые API позволяют получить доступ к ресурсам заведения любому постороннему лицу.</p>
-            <p>Это не попытка взлома — это констатация полного отсутствия безопасности. Рекомендуем немедленно принять меры по защите серверов и закрытию публичного доступа к панелям управления.</p>
-        </div>
-    </div>
+    <div class="main-container">
 
-    <div class="section reveal">
-        <div class="content-box">
-            <h2>ОБ'ЄКТИ АУДИТУ</h2>
-            <div class="tech-data">
-                - Крихівецький ліцей: <strong>CONFIRMED</strong><br>
-                - Ліцей №11: <strong>CONFIRMED</strong><br>
-                - Ліцей №13: <strong>EXPLOITED</strong><br>
-                &nbsp;&nbsp;[+] CMS: WordPress 5.3.21 / PHP 7.4.0<br>
-                &nbsp;&nbsp;[+] Vulnerable plugins: Booster Extension 1.1.3, Elementor 2.9.6<br>
-                &nbsp;&nbsp;[+] Admin entry points: lyceum13, lyubov-hurak<br>
-                &nbsp;&nbsp;[+] System Access: XML-RPC / WP-CRON Open<br>
-                - Наступні цілі: <strong>PENDING</strong>
-            </div>
-        </div>
-    </div>
-
-    <div class="section reveal">
-        <div class="content-box mullvad-ad">
-            <div class="mullvad-logo">
-                    .(&&&(.                                    
+        <div class="ascii-art">
+.(&&&(.                                    
                           %&&&&&&&&&&&&&&&&&&&&&&&&&&&#                         
              
         &&&&&&&&,,,,,             .,.,,&&&&&&&&                    
@@ -174,29 +162,46 @@
    ,,/&&&&&&                
                      &&&&&&&&*,,,,            .,,,,/&&&&&&&%                    
                           (&&&&&&&&&&&&&&&&&&&&&&&&&&&/
-            </div>
-            
-            <p style="text-align: center; color: #ff8800; font-weight: bold; font-size: 16px;">STAY PRIVATE. USE MULLVAD VPN.</p>
-            
-            <a href="https://t.me/recidivismnational" class="author-link">by tg @recidivismnational</a>
         </div>
+
+        <div class="block reveal-left">
+            <h2>[UA] Стан інфраструктури</h2>
+            <p><strong>Повідомляємо</strong>, що цифрова інфраструктура ліцеїв м. Івано-Франківська перебуває у критичному стані. Відсутність базового захисту персональних даних та відкриті API дозволяють отримати доступ до ресурсів закладу будь-якій сторонній особі.</p>
+            <p>Це не спроба злому — це констатація повної відсутності безпеки. Рекомендуємо негайно вжити заходів щодо захисту серверів та закриття публічного доступу до панелей управління.</p>
+        </div>
+
+        <div class="block reveal-right">
+            <h2>[RU] Состояние инфраструктуры</h2>
+            <p><strong>Сообщаем</strong>, что цифровая инфраструктура лицеев г. Ивано-Франковска находится в критическом состоянии. Отсутствие базовой защиты персональных данных и открытые API позволяют получить доступ к ресурсам заведения любому постороннему лицу.</p>
+            <p>Это не попытка взлома — это констатация полного отсутствия безопасности. Рекомендуем немедленно принять меры по защите серверов и закрытию публичного доступа к панелям управления.</p>
+            <div class="author-sign">by tg @recidivismnational</div>
+        </div>
+
     </div>
 
     <div class="footer">
-        ID: KONTRA-2026-X | NO_REPLY | ENCRYPTED_CHANNEL
+        KONTRA SECURITY NOTICE // ID: KNTRA-2026 // NO RIGHTS RESERVED
     </div>
 
     <script>
-        // Анімація ScrollReveal
-        ScrollReveal().reveal('.reveal', { 
-            delay: 100, // Мінімальна затримка
-            duration: 800, // Швидкість анімації
-            distance: '30px', 
-            origin: 'bottom',
-            reset: true, // Анімація повторюється при скролі назад
-            easing: 'cubic-bezier(0.5, 0, 0, 1)' // Більш агресивна анімація
+        // Ініціалізація ScrollReveal
+        const sr = ScrollReveal({
+            distance: '60px', // Дистанція руху
+            duration: 1000,   // Тривалість анімації (1 секунда)
+            delay: 200,       // Відстрочка
+            reset: true       // Анімація повторюється при кожному скролі (можна вимкнути, поставивши false)
         });
+
+        // Анімація для першого блоку (UA) - випливає зліва
+        sr.reveal('.reveal-left', { origin: 'left' });
+
+        // Анімація для другого блоку (RU) - випливає справа
+        sr.reveal('.reveal-right', { origin: 'right', delay: 400 });
+
+        // Також робимо ASCII-арт видимим відразу
+        ScrollReveal().reveal('.ascii-art', { delay: 0, duration: 0, reset: false });
     </script>
 </body>
 </html>
+
 
